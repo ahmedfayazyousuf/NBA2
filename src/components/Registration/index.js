@@ -394,7 +394,7 @@ const Registration = () =>{
                 </div>
 
                 <div style={{width:"100%", display: 'flex', flexDirection: 'column',background:'fff', marginTop: '13px'}}>
-                        <label style={{color:"#fff", fontWeight:"400", marginBottom: '10px'}}>Gender</label>
+                        {/* <label style={{color:"#fff", fontWeight:"400", marginBottom: '10px'}}>Gender</label> */}
                         <div class="switch-button">
                             <input className="switch-button-checkbox" id='check' type="checkbox" onClick={check}></input>
                             <label className="switch-button-label" for=""><span className="switch-button-label-span">MALE</span></label>
