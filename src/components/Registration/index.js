@@ -58,6 +58,7 @@ const Registration = () =>{
         const Name = document.getElementById("Name").value;
         const Msg = document.getElementById("message").value;
         const Country = document.getElementById("country").value;
+        const Check = document.getElementById("invalidCheck").checked;
        
         console.log(Email)
 
@@ -78,6 +79,11 @@ const Registration = () =>{
         if(select === ''){
             document.getElementById('error').innerHTML = "PLEASE SELECT YOUR GENDER"
             return;
+        }
+
+        if(Check === false){
+            document.getElementById('error').innerHTML = "PLEASE CHECK THE CONSENT"
+            return
         }
 
         Users.add({
