@@ -5,6 +5,8 @@ import '../images/All.css';
 import nbalogo from '../images/nba.png'
 import submit from '../images/submit.png'
 import basketball from '../images/basketball.jpg'
+import { useState } from 'react';
+import './style.scss'
 // import GetReady from '../getready.png';
 // import { useParams } from "react-router-dom";
 // eslint-disable-next-line
@@ -19,45 +21,32 @@ const Registration = () =>{
     // const location = useLocation();
     // eslint-disable-next-line
     const buttonRef = useRef(null);
+    const [select, setSelect] = useState('m')
 
-    // const [count, setCount] = useState(0);
-    // const [emailB, setEmailB] = useState(false);
-    // const [select, setSelect] = useState('')
+//    function onlyOnetwo(e) {
+//         var checkm = document.getElementById('checkm');
+//         var checkf = document.getElementById('checkf');
+//         // checkm.checked = !checkm.checked 
+//         // checkf.checked = !checkf.checked 
+//         // console.log(checkbox)
 
-    // function onlyOnetwo(e) {
-    //     var checkm = document.getElementById('checkmd');
-    //     var checkf = document.getElementById('checkfd');
-    //     // checkm.checked = !checkm.checked 
-    //     // checkf.checked = !checkf.checked 
-    //     // console.log(checkbox)
+//         if(e === 'm'){
 
-    //     if(e === 'm'){
-    //         console.log("lol")
+//             checkf.checked = false
+//             setSelect("m")
             
-    //         checkf.checked = false
-    //         setSelect("Yes")
+//             // setUser({...user, [firstname]:value})
+//         }
+
+//         if(e === 'f'){
+
             
-    //         // setUser({...user, [firstname]:value})
-    //     }
+//             checkm.checked = false
+//             setSelect("f")
 
-    //     if(e === 'f'){
-    //         console.log("lil")
-            
-    //         checkm.checked = false
-    //         setSelect("No")
-
-    //         // setUser({...user, [firstname]:value})
-    //     }
-    // }
-    // function HandleMap() {
-    //     if(location.state.date === '9feb') {
-    //         navigate(`/${location.state.date}`)
-    //     }
-
-    //     else{
-    //         navigate(`/Date/${location.state.date}`)
-    //     }
-    // }
+//             // setUser({...user, [firstname]:value})
+//         }
+//     }
 
     function HandleSubmit(){
         console.log('2');
@@ -86,16 +75,34 @@ const Registration = () =>{
             
         }
 
+        if(select === ''){
+            document.getElementById('error').innerHTML = "PLEASE SELECT YOUR GENDER"
+            return;
+        }
+
         Users.add({
             Name:Name,
             Email:Email,
             Number:Number,
             Message: Msg,
+            Gender: select,
             time: firebase.firestore.FieldValue.serverTimestamp()
 
         }).then(()=>{
             navigate('/Success')
         })
+    }
+
+    function check(){
+        if (select === 'm'){
+            setSelect('f')
+            console.log(select)
+        }
+        else{
+            setSelect('m')
+            console.log(select)
+
+        }
     }
     
     return( 
@@ -125,6 +132,14 @@ const Registration = () =>{
 
                 <div style={{width:"100%", display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
                     <textarea className="form-control" type="textarea" name="message" id="message" rows='3' placeholder="For us, the answer is Yes. Now, what's your question?" required style={{height: '115px', marginBottom: '0px', width: '100%', border: '1px solid black', borderRadius: '10px', justifyContent: 'center', alignItems: 'center', paddingLeft: '10px', paddintTop: '10px', paddingRight: '10px', backgroundColor: 'transparent', backgroundColor: 'white'}}/>
+                </div>
+
+                <div style={{width:"100%", display: 'flex', flexDirection: 'column',background:'fff'}}>
+                        <label style={{color:"#fff", fontWeight:"400", marginBottom: '10px'}}>Gender</label>
+                        <div class="switch-button">
+                            <input className="switch-button-checkbox" id='check' type="checkbox" onClick={check}></input>
+                            <label className="switch-button-label" for=""><span className="switch-button-label-span">MALE</span></label>
+                        </div>
                 </div>
 
                 <div>
