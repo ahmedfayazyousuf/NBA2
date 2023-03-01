@@ -422,7 +422,7 @@ const Registration = () =>{
                     <button className="grab"  style={{cursor: 'grab', width: '250px', padding: '5px', border: 'none', borderRadius: '10px', marginLeft: '20px', backgroundColor: 'black', color: 'white', fontSize: '25px'}} variant="contained" onClick={HandleSubmit}>SUBMIT</button>
                 </div> */}
 
-                <div style={{display: 'flex', width: '100%', flexDirection: 'row', justifyContent: 'center'}} onClick={HandleSubmit}>        
+                <div style={{display: 'flex', width: '100%', flexDirection: 'row', justifyContent: 'center', marginBottom:'60px'}} onClick={HandleSubmit}>        
                     <img style={{width: '150px'}} src={submit} alt="submit"/>
                 </div>
 
